@@ -1,0 +1,17 @@
+title 0.6: SPA  diagram
+
+  participant browser
+  participant server
+  
+  
+  Note LEFT of browser: User creates new note 
+  browser->>server: HTTP POST :https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+
+
+  activate server
+ server -->>browser: HTTP status code 200 OK , content: "Hi_World3" date: "2024-07-22T09:47:02.846Z"
+ deactivate server
+
+ deactivate server
+  Note LEFT of browser: browser excutes callback function  
