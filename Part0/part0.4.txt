@@ -1,0 +1,45 @@
+title 0.4: New note diagram
+
+  participant browser
+  participant server
+  Note LEFT of browser: User presses save button 
+  browser->>server: HTTP POST: https://studies.cs.helsinki.fi/exampleapp/new_note
+Note RIGHT of server: The server creates a new note object, and adds it to an array called notes.
+
+
+  activate server
+ server -->>browser: HTTP status code 302 (URL redirect)
+ deactivate server
+browser->>server: HTTP GET: https://studies.cs.helsinki.fi/exampleapp/notes
+
+
+
+  activate server
+ server -->>browser: HTTP status code 200 (fetch html code)
+ deactivate server
+
+browser->>server: HTTP GET:https://studies.cs.helsinki.fi/exampleapp/main.css
+
+
+
+  activate server
+ server -->>browser: HTTP status code 200 (fetch the css code)
+ deactivate server
+
+browser->>server: HTTP GET:https://studies.cs.helsinki.fi/exampleapp/main.js
+  Note LEFT of browser:excute javascript code to fetch JSON data 
+
+
+
+  activate server
+ server -->>browser: HTTP status code 200 (fetch the js code)
+ deactivate server
+browser->>server: HTTP GET:https://studies.cs.helsinki.fi/exampleapp/data.json
+
+
+
+
+  activate server
+ server -->>browser: [{"content": "Hi_world","date": "2024-07-22T08:39:26.504Z"}
+ deactivate server
+   Note LEFT of browser:Event handler (callback function) excuted  
