@@ -1,0 +1,43 @@
+title 0.5: SPA  diagram
+
+  participant browser
+  participant server
+  
+  
+  Note LEFT of browser: User loads the page 
+  browser->>server: HTTP GET: https://studies.cs.helsinki.fi/exampleapp/spa
+
+
+
+  activate server
+ server -->>browser: HTTP status code 200 OK 
+ deactivate server
+browser->>server: HTTP GET:https://studies.cs.helsinki.fi/exampleapp/main.css
+
+
+
+
+  activate server
+ server -->>browser: CSS Code 
+ deactivate server
+
+browser->>server: HTTP GET:https://studies.cs.helsinki.fi/exampleapp/spa.js
+
+
+
+
+  activate server
+ server -->>browser: JS code 
+ deactivate server
+
+
+browser->>server: HTTP GET:https://studies.cs.helsinki.fi/exampleapp/spa.js
+
+
+
+
+  activate server
+ server -->>browser: JSON [({content: "XD", date: "2024-07-21T23:35:41.814Z"}....]
+ 
+ deactivate server
+  Note LEFT of browser: browser excutes callback function  
